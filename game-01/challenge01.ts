@@ -1,9 +1,13 @@
 function findFirstSubSet(M: number[], N: number){
-    for(let i = 0; i < M.length - 1; i++){
-        for(let j = i + 1; j < M.length; j++){
-            if(M[i] + M[j] === N){
-                return[M[i], M[j]]
-            } 
+    const differences = {}
+    for(let i = 0; i < M.length ; i++){
+        let diference: number = 0
+        if(M[i] < N){
+            if(differences[M[i]]){
+                return[differences[M[i]], M[i]]
+            }
+            diference = N - M[i]
+            differences[diference] = M[i]
         }
     }
 }
